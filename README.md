@@ -8,12 +8,26 @@ API documentation is available at <https://docs.rapyd.net/build-with-rapyd/refer
 
 ## Usage
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](TODO)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-hxrw3s?file=app.ts&view=editor)
 
 ```typescript
-import { TODO } from "TODO";
+import { RapydApiClient } from '@fern-api/rapyd';
+import { Environment } from "@fern-api/rapyd/environments";
 
-const TODO
+const client = new RapydApiClient({
+  environment: Environment.Sandbox,
+  auth: {
+    accessKey: 'YOUR_KEY',
+  },
+});
+
+const response = await client.pointOfSale.open({
+  otpCode: "abc123",
+  posId: "def456",
+  phoneNumber: "5551234567"
+});
+
+console.log('Received response from Rapyd!', response);
 ```
 
 ## Beta status
